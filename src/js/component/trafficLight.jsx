@@ -1,37 +1,30 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 //create your first component
 const TrafficLight = () => {
 	
-  const [ color, setColor] = useState("red");
-     
+  const [ color, setColor] = useState("");
+  
   return (
     <div>
       <div className="main-container">
         <div className="upperZone"></div>
         <div className="trafficLight">
-
-          <div id="redLight" onClick={() => {
-            const redLight = document.getElementById("redLight");
-            redLight.classList.add("glow");
-            yellowLight.classList.remove("glow");
-            greenLight.classList.remove("glow");
-          }}></div>
-
-          <div id="yellowLight" onClick={() => {
-            const yellowLight = document.getElementById("yellowLight");
-            redLight.classList.remove("glow");
-            yellowLight.classList.add("glow");
-            greenLight.classList.remove("glow");
-          }}></div>
-
-          <div id="greenLight" onClick={() => {
-            const greenLight = document.getElementById("greenLight");
-            redLight.classList.remove("glow");
-            yellowLight.classList.remove("glow");
-            greenLight.classList.add("glow");
-          }}></div>
           
+          {/*Modificamos los valores de las clases de los div directamente con operadores ternarios. Al principio las clases están vacías*/}
+
+          <div className={(color== "red") ? "glow" : ""} id="redLight" onClick={() => {
+            setColor("red");
+          }}></div>
+
+          <div className={(color=="yellow" ? "glow" : "")} id="yellowLight" onClick={() => {
+            setColor("yellow");
+          }}></div>
+
+          <div className={(color=="green" ? "glow" : "")} id="greenLight" onClick={() => {
+            setColor("green");
+          }}></div>
+
         </div>
       </div>
     </div>
